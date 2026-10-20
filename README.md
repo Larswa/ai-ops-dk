@@ -1,6 +1,6 @@
 # ai-ops.dk
 
-Marketing-site for AI-Ops konsulent-virksomhed. Bygget med [Astro](https://astro.build) + [Tailwind CSS v4](https://tailwindcss.com), hostet statisk på Cloudflare Pages.
+Marketing-site for AI-Ops konsulent-virksomhed. Bygget med [Astro](https://astro.build) + [Tailwind CSS v4](https://tailwindcss.com), hostet statisk på Cloudflare Workers (static assets). Repo: [Larswa/ai-ops-dk](https://github.com/Larswa/ai-ops-dk).
 
 ## Kom i gang lokalt
 
