@@ -1,0 +1,35 @@
+---
+const rows = [
+  { type: "Sortering af post", model: "[MODEL]", price: "[0,00] kr./sag" },
+  { type: "Udkast til svar", model: "[MODEL]", price: "[0,00] kr./sag" },
+  { type: "Sagsstøtte, kompleks", model: "[MODEL]", price: "[0,00] kr./sag" },
+];
+const cols = "grid grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)] gap-x-3 px-6";
+---
+
+<section id="pris" class="bg-skifer text-skifer-ink">
+  <div class="container-page py-16 md:py-24 flex flex-wrap items-center gap-x-16 gap-y-12">
+    <div class="basis-[460px] grow min-w-0 flex flex-col gap-5">
+      <div class="overline text-skifer-muted">Pris pr. sag</div>
+      <h2 class="m-0 font-serif text-[32px] leading-10 md:text-[40px] md:leading-[48px] font-medium tracking-[-0.01em]">
+        Den mindste model, der løser opgaven godt nok
+      </h2>
+      <p class="m-0 text-lg leading-7 text-skifer-muted">
+        Vi måler på jeres egne sager og vælger modelstørrelsen derefter. Så giver driftsprisen pr. sag mening, og I kan budgettere med den.
+      </p>
+    </div>
+    <div class="basis-[400px] grow min-w-0 border border-skifer-line rounded-[2px] bg-skifer-raised">
+      <div class:list={[cols, "py-3.5 border-b border-skifer-line text-[13px] leading-5 font-medium text-skifer-muted"]}>
+        <div>Sagstype</div><div>Model</div><div class="text-right">Pris pr. sag</div>
+      </div>
+      {rows.map((r) => (
+        <div class:list={[cols, "py-4 border-b border-skifer-line text-[15px] leading-[22px] items-center"]}>
+          <div>{r.type}</div>
+          <div class="font-mono text-sm text-skifer-muted">{r.model}</div>
+          <div class="font-mono text-sm text-right">{r.price}</div>
+        </div>
+      ))}
+      <div class="px-6 py-3.5 text-[13px] leading-5 text-skifer-muted">Eksempel. Tallene måles i afklaringsfasen på jeres egne data.</div>
+    </div>
+  </div>
+</section>

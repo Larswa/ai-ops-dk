@@ -1,0 +1,23 @@
+---
+const principles = [
+  { title: "Fra pilot til produktion", body: "Vi stopper ikke ved en demo. Løsningen kører i jeres drift, på jeres data, med jeres medarbejdere." },
+  { title: "Pris pr. sag, ikke pr. hype", body: "Den rigtige modelstørrelse giver en forudsigelig og lav driftsomkostning." },
+  { title: "Agentiske arbejdsgange", body: "AI, der udfører hele arbejdsgange: sortering, opslag, udkast og journalisering. Ikke bare en chatbot." },
+  { title: "Europæisk og uafhængig", body: "Ingen binding til én amerikansk platform. Data og modeller bliver inden for EU." },
+];
+---
+
+<section class="bg-sunken">
+  <div class="container-page section-y flex flex-col gap-12">
+    <h2 class="m-0 heading-2 max-w-[720px]">I produktion, i den rigtige størrelse, inden for EU's grænser</h2>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(240px,100%),1fr))] gap-8">
+      {principles.map((p, i) => (
+        <div class="bg-raised border border-line rounded-[2px] p-6 flex flex-col gap-3">
+          <div class="font-mono text-[13px] text-muted">{String(i + 1).padStart(2, "0")}</div>
+          <h3 class="m-0 text-xl leading-[26px] font-semibold">{p.title}</h3>
+          <p class="m-0 text-[15px] leading-6 text-muted">{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

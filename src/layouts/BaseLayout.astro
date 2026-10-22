@@ -54,7 +54,8 @@ const ogImage = new URL(image, Astro.site ?? `https://${site.domain}`);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/InterVariable.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/IBMPlexSans-Regular.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/Newsreader-Medium.woff2" crossorigin />
 
     <script
       type="application/ld+json"
@@ -70,7 +71,7 @@ const ogImage = new URL(image, Astro.site ?? `https://${site.domain}`);
             description: site.description,
             taxID: `DK${site.company.cvr}`,
             address: { "@type": "PostalAddress", streetAddress: "Rørløkken 62", postalCode: "2730", addressLocality: "Herlev", addressCountry: "DK" },
-            email: site.owner.email,
+            email: site.email,
             areaServed: "DK",
           },
           {
@@ -94,14 +95,12 @@ const ogImage = new URL(image, Astro.site ?? `https://${site.domain}`);
             areaServed: { "@type": "Country", name: "Denmark" },
             hasOfferCatalog: {
               "@type": "OfferCatalog",
-              name: "AI-ydelser",
+              name: "AI Ops produkter",
               itemListElement: [
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI-strategi og roadmap" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI-infrastruktur" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI-implementering" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI-governance og sikkerhed" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Oplæring af team" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI-sundhedstjek" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Ops Sagsstøtte" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Ops Automatisering" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Ops Corpus" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Ops Inference" } },
               ],
             },
           },
