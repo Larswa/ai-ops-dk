@@ -1,0 +1,25 @@
+---
+const steps = [
+  { title: "Sortering", text: "Sagen læses, klassificeres og prioriteres ud fra indhold, ikke emnefelt." },
+  { title: "Opslag", text: "Sagens historik, regler og praksis hentes fra jeres egne systemer." },
+  { title: "Udkast", text: "Et forslag til svar eller afgørelse med kildehenvisninger." },
+  { title: "Godkendelse", text: "Medarbejderen retter og godkender. Mennesket beslutter." },
+  { title: "Journalisering", text: "Sagen arkiveres korrekt, og næste skridt sættes i gang." },
+];
+---
+
+<section id="arbejdsgang" class="container-page pt-16 pb-14 md:pt-24 md:pb-20 flex flex-col gap-12">
+  <div class="flex flex-col gap-4 max-w-[720px]">
+    <div class="kicker text-muted">En sag, fra start til slut</div>
+    <h2 class="m-0 heading-2">Hele arbejdsgangen, ikke bare en chatbot</h2>
+  </div>
+  <ol class="m-0 p-0 list-none grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] border-t-2 border-ink">
+    {steps.map((s, i) => (
+      <li class="py-6 pr-6 flex flex-col gap-2.5 border-b border-line">
+        <div class="font-mono text-[13px] text-muted">{String(i + 1).padStart(2, "0")}</div>
+        <div class="text-lg leading-6 font-semibold">{s.title}</div>
+        <div class="text-[15px] leading-6 text-muted">{s.text}</div>
+      </li>
+    ))}
+  </ol>
+</section>

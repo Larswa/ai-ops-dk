@@ -1,0 +1,23 @@
+---
+const phases = [
+  { duration: "Få dage", title: "Afklaring", body: "Vi finder de sagstyper, hvor I taber mest tid, og måler, hvad automatisering og assistance kan flytte." },
+  { duration: "4-6 uger", title: "Prototype", body: "En fungerende løsning på rigtige sager, testet med jeres medarbejdere og målt mod jeres nuværende kvalitet." },
+  { duration: "Løbende drift", title: "Produktion", body: "Integreret i jeres systemer, overvåget og driftet, på europæisk infrastruktur." },
+];
+---
+
+<section class="container-page pt-16 pb-14 md:pt-24 md:pb-20 flex flex-col gap-12">
+  <div class="flex flex-col gap-4 max-w-[720px]">
+    <div class="kicker text-muted">Sådan arbejder vi</div>
+    <h2 class="m-0 heading-2">Fra idé til produktion på uger, ikke år</h2>
+  </div>
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-8">
+    {phases.map((p) => (
+      <div class="flex flex-col gap-3 pt-5 border-t border-line-strong">
+        <div class="font-mono text-sm text-muted">{p.duration}</div>
+        <h3 class="m-0 text-[22px] leading-7 font-semibold">{p.title}</h3>
+        <p class="m-0 prose-body">{p.body}</p>
+      </div>
+    ))}
+  </div>
+</section>

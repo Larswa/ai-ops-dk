@@ -1,57 +1,53 @@
 ---
-import { site } from "../config/site";
+const cases = [
+  { title: "Anmodning om aktindsigt", type: "Aktindsigt · digital post", action: "Dokumenter fundet", system: 1 },
+  { title: "Klage over afgørelse om tilskud", type: "Klagesag · e-mail", action: "Assistent", system: 2 },
+  { title: "Ændring af kontaktoplysninger", type: "Borgerhenvendelse · selvbetjening", action: "Journaliseret", system: 1 },
+  { title: "Ansøgning om dispensation", type: "Byggesag · tredje henvendelse", action: "Assistent", system: 2 },
+  { title: "Spørgsmål om sagsbehandlingstid", type: "Borgerhenvendelse · chat", action: "Besvaret", system: 1 },
+];
 ---
 
-<section class="relative overflow-hidden bg-white">
-  <div class="absolute inset-0 bg-grid pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-br from-brand-100/50 via-accent-100/20 to-transparent blur-3xl pointer-events-none" aria-hidden="true"></div>
-
-  <div class="container-page relative pt-20 md:pt-28 pb-20 md:pb-28">
-    <div class="max-w-3xl">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 border border-brand-100">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-600"></span>
-        </span>
-        <span class="text-xs font-semibold text-brand-700 uppercase tracking-wider">
-          Tilgængelig for nye opgaver
-        </span>
-      </div>
-
-      <h1 class="heading-1 mt-6">
-        AI der virker — <span class="gradient-text">i produktion</span>, ikke kun i pilot.
+<section class="bg-paper">
+  <div id="top" class="container-page pt-16 pb-14 md:pt-24 md:pb-20 flex flex-wrap items-center gap-16">
+    <div class="basis-[480px] grow min-w-0 flex flex-col gap-6">
+      <div class="kicker text-muted">Styrelser · Kommuner · Sagstunge virksomheder</div>
+      <h1 class="m-0 font-serif text-[40px] leading-[44px] md:text-[56px] md:leading-[60px] font-medium tracking-[-0.015em]">
+        Jeres bedste sagsbehandlers erfaring i hænderne på alle.
       </h1>
-
-      <p class="lead mt-6 max-w-2xl">
-        Som uafhængig AI-konsulent hjælper jeg danske organisationer — i både privat og offentlig sektor — med at bygge
-        robust AI-infrastruktur og integrere AI dér, hvor det skaber målbar
-        forretningsværdi. Fra første proof-of-concept til skalerbar drift.
+      <p class="m-0 text-lg leading-7 text-muted max-w-[34em]">
+        AI Ops automatiserer rutinen og giver medarbejderne en AI-assistent til de svære sager. Fra idé til produktion på uger, ikke år.
       </p>
-
-      <div class="mt-10 flex flex-wrap items-center gap-4">
-        <a href="#kontakt" class="btn-primary">
-          Book en uforpligtende samtale
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </a>
-        <a href="#ydelser" class="btn-secondary">Se ydelser</a>
+      <div class="flex flex-wrap gap-3 pt-2">
+        <a href="#kontakt" class="btn-primary">Find ud af, hvor I taber tid</a>
+        <a href="#systemer" class="btn-secondary">Se hvordan det virker</a>
       </div>
-
-      <dl class="mt-16 grid grid-cols-2 sm:grid-cols-3 gap-8 max-w-2xl">
-        <div>
-          <dt class="text-3xl md:text-4xl font-display font-bold text-ink-900">20+ år</dt>
-          <dd class="mt-1 text-sm text-ink-500">i softwareudvikling og infrastruktur</dd>
-        </div>
-        <div>
-          <dt class="text-3xl md:text-4xl font-display font-bold text-ink-900">Vendor-neutral</dt>
-          <dd class="mt-1 text-sm text-ink-500">rådgivning uden fast platformbinding</dd>
-        </div>
-        <div class="col-span-2 sm:col-span-1">
-          <dt class="text-3xl md:text-4xl font-display font-bold text-ink-900">GDPR · EU</dt>
-          <dd class="mt-1 text-sm text-ink-500">data residency designet efter jeres krav</dd>
-        </div>
-      </dl>
     </div>
+
+    <figure class="m-0 basis-[440px] grow min-w-0 border border-line rounded-[2px] bg-raised" aria-label="Eksempel på indkomne sager">
+      <div class="flex justify-between items-center px-6 py-4 border-b border-line bg-sunken">
+        <div class="text-sm font-semibold">Indkomne sager</div>
+        <div class="font-mono text-[13px] text-muted">i dag</div>
+      </div>
+      <ul class="m-0 p-0 list-none">
+        {cases.map((c) => (
+          <li class="flex flex-wrap gap-x-4 gap-y-2 items-center justify-between px-6 py-4 border-b border-line">
+            <div class="min-w-0 basis-[200px] grow">
+              <div class="text-[15px] leading-[22px] font-medium">{c.title}</div>
+              <div class="text-[13px] leading-5 text-muted">{c.type}</div>
+            </div>
+            <div class="inline-flex items-center gap-2 px-[11px] py-[3px] bg-sunken text-ink rounded-[2px] text-[13px] leading-5 font-medium">
+              {c.system === 1 ? (
+                <span aria-hidden="true" class="inline-block w-1 h-3 bg-routine"></span>
+              ) : (
+                <span aria-hidden="true" class="inline-block w-2.5 h-2.5 bg-signal rounded-full"></span>
+              )}
+              System {c.system} · {c.action}
+            </div>
+          </li>
+        ))}
+      </ul>
+      <figcaption class="px-6 py-4 text-sm text-muted">Mennesket beslutter. Hvert udkast godkendes af en medarbejder.</figcaption>
+    </figure>
   </div>
 </section>

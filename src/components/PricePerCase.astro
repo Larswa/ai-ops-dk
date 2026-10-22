@@ -1,0 +1,32 @@
+---
+const measures = [
+  { label: "Kvalitet", text: "Hvor ofte udkastet kan bruges, målt på jeres egne sager." },
+  { label: "Tid pr. sag", text: "Behandlingstid før og efter, for hver sagstype." },
+  { label: "Pris pr. sag", text: "Driftsprisen i kroner for den modelstørrelse, der løser opgaven." },
+];
+---
+
+<section id="pris" class="bg-skifer text-skifer-ink">
+  <div class="container-page py-16 md:py-24 flex flex-wrap items-center gap-x-16 gap-y-12">
+    <div class="basis-[460px] grow min-w-0 flex flex-col gap-5">
+      <div class="kicker text-skifer-muted">Pris pr. sag</div>
+      <h2 class="m-0 font-serif text-[32px] leading-10 md:text-[40px] md:leading-[48px] font-medium tracking-[-0.01em]">
+        Den mindste model, der løser opgaven godt nok
+      </h2>
+      <p class="m-0 text-lg leading-7 text-skifer-muted">
+        Vi måler på jeres egne sager og vælger modelstørrelsen derefter. Så giver driftsprisen pr. sag mening, og I kan budgettere med den.
+      </p>
+    </div>
+    <div class="basis-[400px] grow min-w-0 border border-skifer-line rounded-[2px] bg-skifer-raised">
+      <div class="px-6 py-3.5 border-b border-skifer-line text-[13px] leading-5 font-medium text-skifer-muted">Det måler vi i afklaringen</div>
+      <dl class="m-0">
+        {measures.map((m) => (
+          <div class="px-6 py-4 border-b border-skifer-line last:border-b-0 flex flex-col gap-1">
+            <dt class="font-mono text-sm">{m.label}</dt>
+            <dd class="m-0 text-[15px] leading-[22px] text-skifer-muted">{m.text}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>

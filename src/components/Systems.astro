@@ -1,0 +1,64 @@
+---
+const systems = [
+  {
+    kicker: "System 1 · Automatisering",
+    title: "AI Ops Automatisering",
+    body: "Rutinesagerne kører igennem uden ventetid: sortering, opslag i jeres systemer, udkast til svar og journalisering. Medarbejderen ser kun det, der kræver et menneske.",
+    items: [
+      "Borgerhenvendelser og standardspørgsmål",
+      "Fremsøgning af dokumenter til aktindsigt",
+      "Fordeling af post og dokumenter til rette kontor",
+    ],
+    system: 1,
+  },
+  {
+    kicker: "System 2 · Beslutningsstøtte",
+    title: "AI Ops Sagsstøtte",
+    body: "En AI-assistent ved siden af medarbejderen i de svære sager. Den samler resumé, relevante regler og tidligere praksis og lægger et udkast frem. Mennesket beslutter.",
+    items: [
+      "Klagesager og genoptagelser",
+      "Tilskud, puljer og dispensationer",
+      "Komplekse sager i forsikring, pension og rådgivning",
+    ],
+    system: 2,
+  },
+];
+---
+
+<section id="systemer" class="container-page pt-16 pb-14 md:pt-24 md:pb-20 flex flex-col gap-12">
+  <div class="flex flex-col gap-4 max-w-[720px]">
+    <div class="kicker text-muted">Ydelser</div>
+    <h2 class="m-0 heading-2">System 1 og System 2</h2>
+    <p class="m-0 lead">Hurtig automatisering af det, der er rutine. Overvejet støtte til det, der kræver en vurdering.</p>
+  </div>
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-8">
+    {systems.map((s) => (
+      <article class="bg-raised border border-line rounded-[2px] p-6 md:p-8 flex flex-col gap-5">
+        <div class="flex items-center gap-4">
+          {s.system === 1 ? (
+            <span aria-hidden="true" class="block w-3.5 h-12 bg-ink"></span>
+          ) : (
+            <span aria-hidden="true" class="block w-10 h-10 bg-signal rounded-full"></span>
+          )}
+          <div>
+            <div class:list={["kicker", s.system === 1 ? "text-routine" : "text-signal"]}>{s.kicker}</div>
+            <h3 class="mt-1 mb-0 text-[22px] leading-7 font-semibold">{s.title}</h3>
+          </div>
+        </div>
+        <p class="m-0 text-base leading-[26px]">{s.body}</p>
+        <ul class="m-0 p-0 list-none flex flex-col gap-2.5 text-[15px] leading-[22px] text-muted">
+          {s.items.map((item) => (
+            <li class="flex gap-3">
+              {s.system === 1 ? (
+                <span aria-hidden="true" class="flex-none w-[3px] h-3.5 mt-1 bg-routine"></span>
+              ) : (
+                <span aria-hidden="true" class="flex-none w-2 h-2 mt-[7px] bg-muted rounded-full"></span>
+              )}
+              {item}
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+</section>

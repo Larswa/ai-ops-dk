@@ -2,99 +2,37 @@
 import { site } from "../config/site";
 const year = new Date().getFullYear();
 
-const specialer = [
-  { label: "AI-konsulent", href: "/ai-konsulent" },
+const links = [
+  { label: "Cases", href: "/cases" },
+  { label: "Blog", href: "/blog" },
   { label: "Self-hosted LLM", href: "/self-hosted-llm" },
-  { label: "AI-governance & EU AI Act", href: "/ai-governance" },
+  { label: "AI-governance", href: "/ai-governance" },
 ];
 ---
 
-<footer class="border-t border-ink-100 bg-ink-50">
-  <div class="container-page py-14 md:py-16">
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
-      <div class="md:col-span-2">
-        <div class="flex items-center gap-2.5">
-          <svg class="w-9 h-9 text-brand-600" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-            <g stroke="currentColor" fill="none" stroke-width="11">
-              <circle cx="100" cy="100" r="80"/>
-              <circle cx="100" cy="100" r="54"/>
-              <circle cx="100" cy="100" r="28"/>
-            </g>
-            <g fill="currentColor">
-              <circle cx="100" cy="100" r="8"/>
-              <circle cx="169.3" cy="60" r="12"/>
-              <circle cx="53.2" cy="73" r="11"/>
-              <circle cx="100" cy="128" r="9"/>
-            </g>
-          </svg>
-          <span class="font-display font-bold text-lg tracking-tight text-ink-900">
-            ai-ops<span class="text-brand-600">.</span>dk
-          </span>
-        </div>
-        <p class="mt-4 text-sm text-ink-600 max-w-md leading-relaxed">
-          {site.description}
-        </p>
-        <p class="mt-5 text-xs text-ink-500">
-          {site.company.legalName}{site.company.cvr && ` · CVR ${site.company.cvr}`}<br />
-          {site.company.address} · <a href={site.related.factus} class="hover:text-ink-700 underline decoration-ink-300 underline-offset-2">factus.dk</a>
-        </p>
-      </div>
-
-      <div>
-        <h4 class="text-xs font-semibold uppercase tracking-wider text-ink-900">Specialer</h4>
-        <ul class="mt-4 space-y-2.5">
-          {specialer.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                class="text-sm text-ink-600 hover:text-ink-900 transition-colors"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="text-xs font-semibold uppercase tracking-wider text-ink-900">Naviger</h4>
-        <ul class="mt-4 space-y-2.5">
-          {site.nav.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                target={"external" in item && item.external ? "_blank" : undefined}
-                rel={"external" in item && item.external ? "noopener" : undefined}
-                class="text-sm text-ink-600 hover:text-ink-900 transition-colors"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="text-xs font-semibold uppercase tracking-wider text-ink-900">Kontakt</h4>
-        <ul class="mt-4 space-y-2.5 text-sm">
-          <li>
-            <a href={`mailto:${site.owner.email}`} class="text-ink-600 hover:text-ink-900 transition-colors">
-              {site.owner.email}
-            </a>
-          </li>
-          <li>
-            <a href={site.owner.linkedin} class="text-ink-600 hover:text-ink-900 transition-colors" target="_blank" rel="noopener">
-              LinkedIn
-            </a>
-          </li>
-          <li class="text-ink-500">{site.owner.location}</li>
-        </ul>
-      </div>
+<footer class="bg-sunken border-t border-line">
+  <div class="container-page py-14 flex flex-wrap justify-between gap-x-16 gap-y-8">
+    <div class="flex flex-col gap-4 basis-64 grow">
+      <img src="/logo/ai-ops-logo.svg" alt="AI Ops" width="112" height="23" class="block w-28 h-auto" />
+      <p class="text-sm leading-[22px] text-muted">AI-understøttet sagsbehandling, fra idé til produktion.</p>
     </div>
-
-    <div class="mt-12 pt-6 border-t border-ink-200 flex flex-col md:flex-row justify-between gap-4 text-xs text-ink-500">
-      <p>© {year} {site.company.legalName}. Alle rettigheder forbeholdes.</p>
-      <p>Bygget med Astro · hostet på Cloudflare Workers</p>
+    <div class="flex flex-wrap gap-x-16 gap-y-8 text-sm leading-6">
+      <div class="flex flex-col gap-1">
+        <h2 class="kicker text-muted pb-2">Kontakt</h2>
+        <a href={`mailto:${site.email}`} class="text-ink">{site.email}</a>
+        <div>{site.company.address}</div>
+      </div>
+      <div class="flex flex-col gap-1">
+        <h2 class="kicker text-muted pb-2">Læs mere</h2>
+        {links.map((l) => <a href={l.href} class="text-ink">{l.label}</a>)}
+      </div>
+      <div class="flex flex-col gap-1">
+        <h2 class="kicker text-muted pb-2">AI Ops</h2>
+        <div>{site.domain}</div>
+        <div>{site.company.legalName}</div>
+        <div>CVR {site.company.cvr}</div>
+      </div>
     </div>
   </div>
+  <div class="container-page pb-8 text-xs text-muted">© {year} {site.company.legalName}</div>
 </footer>
