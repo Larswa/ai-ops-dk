@@ -5,5 +5,7 @@
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page"
-  }
+  },
+  // Kræves af `wrangler preview`, som Workers Builds kører for ikke-produktions-branches
+  "previews": {}
 }
