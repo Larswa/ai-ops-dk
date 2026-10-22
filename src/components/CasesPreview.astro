@@ -10,7 +10,7 @@ const cases = (await getCollection("cases"))
 <section id="cases" class="container-page pb-14 md:pb-20 flex flex-col gap-8">
   <div class="flex flex-wrap items-end justify-between gap-6">
     <div class="flex flex-col gap-4">
-      <div class="overline text-muted">Fra praksis</div>
+      <div class="kicker text-muted">Fra praksis</div>
       <h2 class="m-0 heading-2">Allerede i drift i staten</h2>
     </div>
     <a href="/cases" class="text-sm font-medium text-signal underline underline-offset-4">Alle cases</a>
@@ -18,7 +18,7 @@ const cases = (await getCollection("cases"))
   <div class="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-8">
     {cases.map((c) => (
       <a href={`/cases/${c.id}`} class="card flex flex-col gap-3 text-ink no-underline">
-        <div class="overline text-muted">{c.data.industry} · {c.data.duration}</div>
+        <div class="kicker text-muted">{c.data.industry} · {c.data.duration}</div>
         <h3 class="m-0 text-[22px] leading-7 font-semibold">{c.data.title}</h3>
         <p class="m-0 text-[15px] leading-6 text-muted">{c.data.summary}</p>
       </a>

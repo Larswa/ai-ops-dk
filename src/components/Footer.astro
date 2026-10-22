@@ -18,16 +18,16 @@ const links = [
     </div>
     <div class="flex flex-wrap gap-x-16 gap-y-8 text-sm leading-6">
       <div class="flex flex-col gap-1">
-        <h2 class="overline text-muted pb-2">Kontakt</h2>
+        <h2 class="kicker text-muted pb-2">Kontakt</h2>
         <a href={`mailto:${site.email}`} class="text-ink">{site.email}</a>
         <div>{site.company.address}</div>
       </div>
       <div class="flex flex-col gap-1">
-        <h2 class="overline text-muted pb-2">Læs mere</h2>
+        <h2 class="kicker text-muted pb-2">Læs mere</h2>
         {links.map((l) => <a href={l.href} class="text-ink">{l.label}</a>)}
       </div>
       <div class="flex flex-col gap-1">
-        <h2 class="overline text-muted pb-2">AI Ops</h2>
+        <h2 class="kicker text-muted pb-2">AI Ops</h2>
         <div>{site.domain}</div>
         <div>{site.company.legalName}</div>
         <div>CVR {site.company.cvr}</div>
