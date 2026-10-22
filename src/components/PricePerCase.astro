@@ -1,10 +1,9 @@
 ---
-const rows = [
-  { type: "Sortering af post", model: "[MODEL]", price: "[0,00] kr./sag" },
-  { type: "Udkast til svar", model: "[MODEL]", price: "[0,00] kr./sag" },
-  { type: "Sagsstøtte, kompleks", model: "[MODEL]", price: "[0,00] kr./sag" },
+const measures = [
+  { label: "Kvalitet", text: "Hvor ofte udkastet kan bruges, målt på jeres egne sager." },
+  { label: "Tid pr. sag", text: "Behandlingstid før og efter, for hver sagstype." },
+  { label: "Pris pr. sag", text: "Driftsprisen i kroner for den modelstørrelse, der løser opgaven." },
 ];
-const cols = "grid grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)] gap-x-3 px-6";
 ---
 
 <section id="pris" class="bg-skifer text-skifer-ink">
@@ -19,17 +18,15 @@ const cols = "grid grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)] gap-x
       </p>
     </div>
     <div class="basis-[400px] grow min-w-0 border border-skifer-line rounded-[2px] bg-skifer-raised">
-      <div class:list={[cols, "py-3.5 border-b border-skifer-line text-[13px] leading-5 font-medium text-skifer-muted"]}>
-        <div>Sagstype</div><div>Model</div><div class="text-right">Pris pr. sag</div>
-      </div>
-      {rows.map((r) => (
-        <div class:list={[cols, "py-4 border-b border-skifer-line text-[15px] leading-[22px] items-center"]}>
-          <div>{r.type}</div>
-          <div class="font-mono text-sm text-skifer-muted">{r.model}</div>
-          <div class="font-mono text-sm text-right">{r.price}</div>
-        </div>
-      ))}
-      <div class="px-6 py-3.5 text-[13px] leading-5 text-skifer-muted">Eksempel. Tallene måles i afklaringsfasen på jeres egne data.</div>
+      <div class="px-6 py-3.5 border-b border-skifer-line text-[13px] leading-5 font-medium text-skifer-muted">Det måler vi i afklaringen</div>
+      <dl class="m-0">
+        {measures.map((m) => (
+          <div class="px-6 py-4 border-b border-skifer-line last:border-b-0 flex flex-col gap-1">
+            <dt class="font-mono text-sm">{m.label}</dt>
+            <dd class="m-0 text-[15px] leading-[22px] text-skifer-muted">{m.text}</dd>
+          </div>
+        ))}
+      </dl>
     </div>
   </div>
 </section>
