@@ -1,0 +1,46 @@
+# Skriver Cloudflare preview-URL'en som kommentar på hver PR.
+# Cloudflare Workers Builds (`wrangler preview`) laver en fast adresse pr. branch:
+#   https://<branch-slug>-ai-ops-dk.lars-127.workers.dev
+name: Preview URL
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  comment:
+    # Kun branches i dette repo (forks bygges ikke af Cloudflare)
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find preview-URL og kommenter
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          HEAD_REF: ${{ github.head_ref }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          slug=$(printf '%s' "$HEAD_REF" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//')
+          url="https://${slug}-ai-ops-dk.lars-127.workers.dev"
+
+          # Vent på at Cloudflare-buildet for dette commit er færdigt (max ~10 min)
+          status="ukendt"
+          for i in $(seq 1 40); do
+            status=$(gh api "repos/$GH_REPO/commits/$SHA/check-runs" \
+              --jq '[.check_runs[] | select(.name | test("Workers Builds"))][0] | if . == null then "pending" elif .status != "completed" then "pending" else .conclusion end')
+            [ "$status" != "pending" ] && break
+            sleep 15
+          done
+
+          if [ "$status" = "success" ]; then
+            body=$(printf '### 🔍 Preview\n\n%s\n\nOpdateres automatisk ved hvert push til `%s`. Seneste build: `%s`.' "$url" "$HEAD_REF" "${SHA:0:7}")
+          else
+            body=$(printf '### 🔍 Preview\n\n⚠️ Cloudflare-buildet for `%s` endte med status **%s**, så previewet er ikke opdateret.\nSe loggen under **Checks → Workers Builds → Details**.\n\nAdresse når det virker: %s' "${SHA:0:7}" "$status" "$url")
+          fi
+
+          # Opdater egen tidligere kommentar, ellers opret en ny
+          gh pr comment "$PR" --edit-last --body "$body" 2>/dev/null || gh pr comment "$PR" --body "$body"
