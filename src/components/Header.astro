@@ -14,11 +14,8 @@ import { site } from "../config/site";
       {site.nav.map((item) => (
         <a href={item.href} class="py-3 text-ink no-underline hover:text-signal">{item.label}</a>
       ))}
-      <a
-        href="/#kontakt"
-        class="inline-flex items-center min-h-11 px-4 border border-line-strong rounded-[2px] text-ink no-underline hover:border-ink"
-      >
-        Book en snak
+      <a href={site.bookingUrl} class="btn-primary min-h-11 no-underline">
+        Book et AI møde
       </a>
     </div>
   </nav>

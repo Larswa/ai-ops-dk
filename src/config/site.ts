@@ -6,6 +6,8 @@ export const site = {
   description:
     "AI Ops hjælper danske organisationer, offentlige og private, med AI-understøttet sagsbehandling: fra idé til produktion, på den rigtige model og inden for EU's grænser.",
   email: "info@ai-ops.dk",
+  // Skift til et Cal.com-, Calendly- eller Microsoft Bookings-link, når kalenderen er sat op.
+  bookingUrl: "mailto:info@ai-ops.dk?subject=Book%20et%20m%C3%B8de%20med%20AI%20Ops",
   owner: {
     name: "Lars W. Andersen",
     role: "AI-konsulent og rådgiver",

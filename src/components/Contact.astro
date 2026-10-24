@@ -8,7 +8,7 @@ import { site } from "../config/site";
       Skal vi tage en snak om, hvor I taber mest tid i dag?
     </h2>
     <div class="flex flex-col gap-3 basis-80 shrink">
-      <a href={`mailto:${site.email}?subject=Henvendelse%20fra%20ai-ops.dk`} class="btn-primary min-h-[52px] px-6 text-base">
+      <a href={site.bookingUrl} class="btn-primary min-h-[52px] px-6 text-base">
         Book 30 minutter
       </a>
       <a href={`mailto:${site.email}`} class="text-sm text-center text-skifer-ink">{site.email}</a>
