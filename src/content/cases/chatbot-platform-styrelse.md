@@ -33,7 +33,7 @@ At bygge dem fra bunden hver gang ville være spild, og endnu vigtigere: hver bo
 
 ## Tilgangen: modulær platform i tre lag
 
-Jeg designede og byggede platformen som en pluggable arkitektur. Tre hovedlag, hvor man for hver ny chatbot kun komponerer det relevante.
+Vi designede og byggede platformen som en pluggable arkitektur. Tre hovedlag, hvor man for hver ny chatbot kun komponerer det relevante.
 
 ### 1. Ingestion-pipeline med pluggable kilder
 
@@ -78,7 +78,7 @@ Begge runtimes, **vLLM** og **llama.cpp**, er holdt op imod hinanden, så valget
 
 Spørgsmålet "kan denne bot drives på en lille lokal model i stedet for en frontier-API?" er ikke et engangs-svar. Markedet for åbne sprogmodeller flytter sig hver måned, og nye optimeringer (turboquants, MTP, distillation) kommer løbende. En model der ikke holdt for tre måneder siden, kan være den rette i dag, og omvendt.
 
-Derfor er en stor del af leverancen ikke et færdigt model-valg, men det **datagrundlag og evaluerings-framework** styrelsen kan bruge til at træffe denne type beslutninger løbende, også længe efter min involvering. Konkret omfatter det:
+Derfor er en stor del af leverancen ikke et færdigt model-valg, men det **datagrundlag og evaluerings-framework** styrelsen kan bruge til at træffe denne type beslutninger løbende, også længe efter vores involvering. Konkret omfatter det:
 
 - **Domain-specifikke eval-datasets** sammensat sammen med fagpersoner: typiske spørgsmål fra hver bots reelle brugsområde, parret med kuraterede gode svar og kilde-referencer
 - **Automatiseret eval-pipeline** der kører en ny model mod hele datasettet uden manuel intervention: én kommando, fuld rapport
@@ -90,7 +90,7 @@ Effekten er strategisk frem for én engangs-besparelse: styrelsen kan løbende k
 
 ## Sikkerhed for ekstern eksponering
 
-Den eksterne juridiske bot betyder at platformen skal kunne stå alene mod internettet. Jeg har lagt en lagdelt sikkerhedsplan, prioriteret efter reel risiko:
+Den eksterne juridiske bot betyder at platformen skal kunne stå alene mod internettet. Vi har lagt en lagdelt sikkerhedsplan, prioriteret efter reel risiko:
 
 - **Perimeter**: TLS via offentlig CA, WAF foran Caddy, SSO (OIDC mod Entra) foran Open WebUI, mTLS mellem komponenter, egress-allowlist på gateway-containeren
 - **Anti-misbrug**: rate limiting pr. bruger og IP, concurrency-cap, max input-længde, daglig token-quota, cost circuit breaker mod cloud-fallback
@@ -110,7 +110,7 @@ Platformen er bygget som **generisk infrastruktur** der kan genbruges for fremti
 
 Selve platform-laget er funktionelt og dækker hele flowet fra ingestion til streaming-svar. Næste milepæl er P0-sikkerhedslaget før den borgerrettede bot åbnes mod internettet, og afsluttende model-evaluering for at låse den endelige model-mix pr. bot.
 
-## Hvad jeg leverede
+## Hvad vi leverede
 
 - Arkitektur og design af modulær chatbot-platform
 - Hands-on implementering af RAG-gateway med hybrid retrieval og reranking

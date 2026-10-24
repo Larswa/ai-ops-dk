@@ -5,26 +5,26 @@ import Contact from "../components/Contact.astro";
 const faq = [
   {
     q: "Hvornår giver self-hosted LLM mening frem for et API?",
-    a: "Self-hosted LLM giver typisk mening når data ikke må forlade jeres miljø, når volumen er høj nok til at API-omkostningen overstiger drift af egen kapacitet, eller når latency og oppetid skal være under jeres egen kontrol. For de fleste organisationer er et API stadig det rigtige. Det er præcis den vurdering jeg laver først, ærligt.",
+    a: "Self-hosted LLM giver typisk mening når data ikke må forlade jeres miljø, når volumen er høj nok til at API-omkostningen overstiger drift af egen kapacitet, eller når latency og oppetid skal være under jeres egen kontrol. For de fleste organisationer er et API stadig det rigtige. Det er præcis den vurdering vi laver først, ærligt.",
   },
   {
     q: "Kan en self-hosted LLM køre GDPR- og EU AI Act-compliant?",
     a: "Ja, og det er ofte selve grunden til at vælge self-hosted. Når modellen kører på infrastruktur I kontrollerer, bestemmer I selv data residency, logning og hvem der har adgang. Governance bygges ind fra start, ikke som et lag ovenpå bagefter.",
   },
   {
-    q: "Hvilke modeller og hvilken stak arbejder du med?",
+    q: "Hvilke modeller og hvilken stak arbejder I med?",
     a: "Åbne modeller som Mistral Small, Qwen3 og Gemma, serveret med vLLM (inkl. FP8), llama.cpp eller Ollama afhængigt af hardware og krav. Retrieval bygges typisk på Postgres + pgvector med BAAI/bge-m3 og reranker, og hybrid søgning (dense + sparse + RRF). Alt valgt efter opgaven, ikke efter mode.",
   },
   {
     q: "Hvad med GPU-omkostninger?",
-    a: "GPU-kapacitet er som regel den største post, og den kan optimeres markant gennem rigtigt modelvalg, kvantisering (fx FP8), batching og ved at matche kapacitet til faktisk last frem for worst case. Jeg har målt det på tværs af 350+ tests; ofte er en mindre lokal model 'godt nok' til opgaven.",
+    a: "GPU-kapacitet er som regel den største post, og den kan optimeres markant gennem rigtigt modelvalg, kvantisering (fx FP8), batching og ved at matche kapacitet til faktisk last frem for worst case. Vi har målt det på tværs af 350+ tests; ofte er en mindre lokal model 'godt nok' til opgaven.",
   },
 ];
 ---
 
 <BaseLayout
   title="Self-hosted LLM"
-  description="Skal jeres LLM køre on-prem eller i eget cloud-miljø? Jeg designer og driver self-hosted LLM-platforme (vLLM, llama.cpp, Ollama) med fuld datakontrol, GDPR- og EU AI Act-klar."
+  description="Skal jeres LLM køre on-prem eller i eget cloud-miljø? Vi designer og driver self-hosted LLM-platforme (vLLM, llama.cpp, Ollama) med fuld datakontrol, GDPR- og EU AI Act-klar."
 >
   <section class="bg-white border-b border-ink-100">
     <div class="container-page pt-20 md:pt-28 pb-14">
@@ -34,7 +34,7 @@ const faq = [
       </h1>
       <p class="lead mt-6 max-w-2xl">
         Når data ikke må forlade huset, eller når API-regningen vokser hurtigere
-        end værdien, er en self-hosted LLM-platform svaret. Jeg designer,
+        end værdien, er en self-hosted LLM-platform svaret. Vi designer,
         bygger og driver den: on-prem, i eget cloud-miljø eller hybrid.
       </p>
       <div class="mt-10 flex flex-wrap items-center gap-4">
@@ -77,7 +77,7 @@ const faq = [
           </li>
         </ul>
         <p>
-          Jeg uddyber kriterierne i bloggen:
+          Vi uddyber kriterierne i bloggen:
           <a href="/blog/hvornar-self-hosted-llm-giver-mening" class="text-brand-700 underline underline-offset-2">Hvornår giver self-hosted LLM faktisk mening?</a>
         </p>
       </div>
@@ -88,7 +88,7 @@ const faq = [
     <div class="container-page">
       <div class="max-w-2xl">
         <span class="eyebrow">Stakken</span>
-        <h2 class="heading-2 mt-3">Modeller og infrastruktur jeg arbejder med</h2>
+        <h2 class="heading-2 mt-3">Modeller og infrastruktur vi arbejder med</h2>
         <p class="lead mt-5">
           Valgt efter opgaven, hardwaren og kravene, ikke efter hvad der er
           mest hypet.
@@ -136,7 +136,7 @@ const faq = [
           Se også
           <a href="/cases" class="text-brand-700 underline underline-offset-2">cases</a>
           for konkrete platform-forløb, eller læs mere
-          <a href="/ai-konsulent" class="text-brand-700 underline underline-offset-2">om hvordan jeg arbejder som AI-konsulent</a>.
+          <a href="/ai-konsulent" class="text-brand-700 underline underline-offset-2">om hvordan vi arbejder som AI-konsulenter</a>.
         </p>
       </div>
     </div>

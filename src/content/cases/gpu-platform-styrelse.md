@@ -28,13 +28,13 @@ Samtidig var traditionel on-prem GPU-investering (racks i eget datacenter) både
 
 ## Tilgangen
 
-Jeg etablerede platformen på dedikerede GPU-servere hos Hetzner. Det giver fysisk hardware, kontraktligt isoleret, EU-placeret, men med kort lead time og forudsigelig månedlig pris frem for stort engangsindkøb.
+Vi etablerede platformen på dedikerede GPU-servere hos Hetzner. Det giver fysisk hardware, kontraktligt isoleret, EU-placeret, men med kort lead time og forudsigelig månedlig pris frem for stort engangsindkøb.
 
 Konkret kom det til at omfatte:
 
 - **3 dedikerede GPU-noder** udstyret med NVIDIA RTX PRO 6000 Blackwell (96 GB VRAM pr. kort). Det giver plads til at køre store open-weights modeller i fuld præcision på en enkelt node og fine-tune mellemstore modeller uden multi-node-opsætning
 - **NVIDIA-stack** (drivere, CUDA, container-runtime) installeret og verificeret pr. node, klar til arbejdsbelastning
-- **Forberedelse til deling** så noderne kunne integreres i et Kubernetes-cluster og stilles til rådighed for udviklere på tværs af teams. Selve cluster-laget blev efterfølgende bygget af et internt team. Min rolle var den underliggende infrastruktur og at sikre at GPU-noderne kunne integreres rent
+- **Forberedelse til deling** så noderne kunne integreres i et Kubernetes-cluster og stilles til rådighed for udviklere på tværs af teams. Selve cluster-laget blev efterfølgende bygget af et internt team. Vores rolle var den underliggende infrastruktur og at sikre at GPU-noderne kunne integreres rent
 
 ## Status og næste skridt
 
@@ -42,7 +42,7 @@ Platformen er etableret og udviklere har adgang. Næste fase, som er i gang, er 
 
 Pointen er ikke at have den nyeste GPU. Pointen er at have *kontrolleret* kapacitet, så styrelsen kan eksperimentere og bygge løsninger uden at hver beslutning skal igennem en compliance-vurdering af endnu en ekstern tjeneste.
 
-## Hvad jeg leverede
+## Hvad vi leverede
 
 - Vurdering og valg af GPU-leverandør og hardware-konfiguration
 - Opsætning af CUDA og NVIDIA-stack på dedikerede noder
