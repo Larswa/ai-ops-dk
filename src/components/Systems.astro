@@ -1,58 +1,94 @@
 ---
-const systems = [
+const offerings = [
   {
-    kicker: "System 1 · Automatisering",
-    title: "AI Ops Automatisering",
+    kicker: "AI Ops Chat · Borgere og medarbejdere",
+    title: "AI-chatbots",
+    body: "En chatbot, der svarer ud fra jeres egne regler, vejledninger og hjemmeside. Den viser kilden til hvert svar og sender spørgsmålet videre til en medarbejder, når det kræver et menneske.",
+    items: [
+      "Borgerservice og selvbetjening døgnet rundt",
+      "Intern vidensbase for medarbejderne",
+      "Svar med henvisning til jeres egne dokumenter",
+    ],
+    marker: "chat",
+  },
+  {
+    kicker: "AI Ops Inference · Hostet i EU",
+    title: "AI-infrastruktur i EU",
+    body: "Sprogmodellerne kører på GPU'er i europæiske datacentre. Data forlader ikke EU, og I ved altid, hvilken model der kører, og hvad den koster pr. sag.",
+    items: [
+      "Åbne modeller i den størrelse, opgaven kræver",
+      "Data behandles og opbevares i EU",
+      "Klar til jeres egne systemer via API",
+    ],
+    marker: "infra",
+  },
+  {
+    kicker: "System 1 · AI Ops Automatisering",
+    title: "Automatisk sagsbehandling",
     body: "Rutinesagerne kører igennem uden ventetid: sortering, opslag i jeres systemer, udkast til svar og journalisering. Medarbejderen ser kun det, der kræver et menneske.",
     items: [
       "Borgerhenvendelser og standardspørgsmål",
       "Fremsøgning af dokumenter til aktindsigt",
       "Fordeling af post og dokumenter til rette kontor",
     ],
-    system: 1,
+    marker: "system1",
   },
   {
-    kicker: "System 2 · Beslutningsstøtte",
-    title: "AI Ops Sagsstøtte",
+    kicker: "System 2 · AI Ops Sagsstøtte",
+    title: "Støtte til sagsbehandleren",
     body: "En AI-assistent ved siden af medarbejderen i de svære sager. Den samler resumé, relevante regler og tidligere praksis og lægger et udkast frem. Mennesket beslutter.",
     items: [
       "Klagesager og genoptagelser",
       "Tilskud, puljer og dispensationer",
       "Komplekse sager i forsikring, pension og rådgivning",
     ],
-    system: 2,
+    marker: "system2",
   },
 ];
+
+const kickerColor = {
+  chat: "text-muted",
+  infra: "text-muted",
+  system1: "text-routine",
+  system2: "text-signal",
+};
 ---
 
 <section id="systemer" class="container-page pt-16 pb-14 md:pt-24 md:pb-20 flex flex-col gap-12">
   <div class="flex flex-col gap-4 max-w-[720px]">
     <div class="kicker text-muted">Ydelser</div>
-    <h2 class="m-0 heading-2">System 1 og System 2</h2>
-    <p class="m-0 lead">Hurtig automatisering af det, der er rutine. Overvejet støtte til det, der kræver en vurdering.</p>
+    <h2 class="m-0 heading-2">Fire ydelser, én platform</h2>
+    <p class="m-0 lead">Fra chatbot til fuld sagsbehandling, på infrastruktur der bliver i EU. Rutinen automatiseres, og de svære sager får en assistent.</p>
   </div>
-  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-8">
-    {systems.map((s) => (
+  <div class="grid md:grid-cols-2 gap-8">
+    {offerings.map((o) => (
       <article class="bg-raised border border-line rounded-[2px] p-6 md:p-8 flex flex-col gap-5">
         <div class="flex items-center gap-4">
-          {s.system === 1 ? (
-            <span aria-hidden="true" class="block w-3.5 h-12 bg-ink"></span>
-          ) : (
-            <span aria-hidden="true" class="block w-10 h-10 bg-signal rounded-full"></span>
-          )}
+          <span aria-hidden="true" class="flex-none w-10 h-12 flex items-center justify-center">
+            {o.marker === "chat" && <span class="block w-10 h-8 border-2 border-ink rounded-[2px]"></span>}
+            {o.marker === "infra" && (
+              <span class="flex flex-col gap-1">
+                <span class="block w-10 h-2.5 bg-ink"></span>
+                <span class="block w-10 h-2.5 bg-ink"></span>
+                <span class="block w-10 h-2.5 bg-ink"></span>
+              </span>
+            )}
+            {o.marker === "system1" && <span class="block w-3.5 h-12 bg-ink"></span>}
+            {o.marker === "system2" && <span class="block w-10 h-10 bg-signal rounded-full"></span>}
+          </span>
           <div>
-            <div class:list={["kicker", s.system === 1 ? "text-routine" : "text-signal"]}>{s.kicker}</div>
-            <h3 class="mt-1 mb-0 text-[22px] leading-7 font-semibold">{s.title}</h3>
+            <div class:list={["kicker", kickerColor[o.marker]]}>{o.kicker}</div>
+            <h3 class="mt-1 mb-0 text-[22px] leading-7 font-semibold">{o.title}</h3>
           </div>
         </div>
-        <p class="m-0 text-base leading-[26px]">{s.body}</p>
+        <p class="m-0 text-base leading-[26px]">{o.body}</p>
         <ul class="m-0 p-0 list-none flex flex-col gap-2.5 text-[15px] leading-[22px] text-muted">
-          {s.items.map((item) => (
+          {o.items.map((item) => (
             <li class="flex gap-3">
-              {s.system === 1 ? (
-                <span aria-hidden="true" class="flex-none w-[3px] h-3.5 mt-1 bg-routine"></span>
-              ) : (
+              {o.marker === "system2" ? (
                 <span aria-hidden="true" class="flex-none w-2 h-2 mt-[7px] bg-muted rounded-full"></span>
+              ) : (
+                <span aria-hidden="true" class:list={["flex-none w-[3px] h-3.5 mt-1", o.marker === "system1" ? "bg-routine" : "bg-muted"]}></span>
               )}
               {item}
             </li>
